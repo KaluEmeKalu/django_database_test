@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Welcome to The Kyrie's Blog</title>
+</head>
+<body>
+     <!-- Site Header -->
+     <h1>Hi. I am kyrie. Welcome to my blog!</h1>
+
+    <!-- Blog Post -->
+    <h2>My First Blog Post</h2>
+    <p>Here is kobe who is the best nba player!!!!</p>
+    <p><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1605251468,2192982596&fm=27&gp=0.jpg" </p>
+    <p>Kobe Bean Bryant (born August 23, 1978) is an American former professional basketball player. He played his entire 20-year career with the Los Angeles Lakers of the National Basketball Association (NBA). He entered the NBA directly from high school and won five NBA championships with the Lakers. Bryant is an 18-time All-Star, 15-time member of the All-NBA Team, and 12-time member of the All-Defensive team. He led the NBA in scoring during two seasons, and ranks third on the league's all-time regular season scoring and fourth on the all-time postseason scoring list. He holds the NBA record for the most seasons playing with one franchise for an entire career and is widely regarded as one of the greatest basketball players of all time.[3][4][5][6] Bryant is the first guard in NBA history to play for at least 20 seasons</p>
+   
+    <!-- Social  -->
+    <button>Like</button>
+
+    <!-- Leave A Comment -->
+    <h2>Leave a Comment</h2>
+    <form action="{% url 'blog:home_page' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Please Enter Your username" name="username"><br><br>
+        <textarea name="comment" placeholder="Please Enter Your Comment"></textarea><br>
+        <input type="submit" value="Post Me!">
+    </form>
+
+    <!-- Display Previous Comments -->
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        User {{comment.user}} says: {{comment.comment}}<hr>
+    {% endfor %}
+</body>
+</html>
